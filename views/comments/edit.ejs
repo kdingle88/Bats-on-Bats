@@ -1,0 +1,20 @@
+<% include ../partials/header %>
+<div class="ui main container">
+  <div class="ui huge header">Post a thought about <%=bat.nickname %></div>
+  <form
+    class="ui form"
+    action="/bats/<%= bat._id%>/comments/<%=comment._id%>?_method=PUT"
+    method="POST"
+  >
+    <div class="field">
+      <label>Your Thought</label>
+      <textarea name="comment[text]" rows="4" required>
+        <%=comment.text %>
+      </textarea>
+    </div>
+
+    <button class="ui button" type="submit">Submit</button>
+  </form>
+</div>
+
+<% include ../partials/footer %>

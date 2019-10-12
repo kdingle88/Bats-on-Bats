@@ -1,0 +1,60 @@
+<% include ../partials/header %>
+<div class="ui main container">
+  <div class="ui centered card">
+    <div class="image">
+      <img src="<%= bat.image %>" alt="" />
+    </div>
+    <div class="content">
+      <a href="/bats/<%=bat._id%>/edit" class="header"><%= bat.nickname %></a>
+      <div class="meta">
+        <span class="date">Bat added <%= bat.created %></span>
+      </div>
+      <div class="meta">
+        <span class="date">Created by <%= bat.author.username%></span>
+      </div>
+      <div class="description">
+        <%= bat.scareTactic %>
+      </div>
+    </div>
+    <div class="extra content">
+      <div class="options">
+        <div class="show-details">
+          <i class="user icon"></i>
+          <%= bat.scareScore %>
+        </div>
+        <% if(currentUser && bat.author.id.equals(currentUser._id)) { %>
+        <div class="show-details">
+          <a href="/bats/<%=bat._id%>/edit" class="mini ui yellow button"
+            >Edit Bat</a
+          >
+        </div>
+        <div class="show-details">
+          <form action="/bats/<%=bat._id %>?_method=DELETE" method="POST">
+            <button class="mini ui red button">DELETE</button>
+          </form>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<h4><a href="/bats/<%=bat._id%>/comments/new">Click to add a comment</a></h4>
+
+<ul>
+  <% bat.comments.forEach(comment => { %>
+  <li><%= comment.author.username %> - <%=comment.text%></li>
+  <a
+    href="/bats/<%=bat._id%>/comments/<%=comment._id%>/edit"
+    class="mini ui yellow button"
+    >Edit</a
+  >
+  <form
+    action="/bats/<%=bat._id%>/comments/<%=comment._id%>?_method=DELETE"
+    method="POST"
+  >
+    <button class="mini ui red button">Delete</button>
+  </form>
+  <% }) %>
+</ul>
+
+<% include ../partials/footer %>

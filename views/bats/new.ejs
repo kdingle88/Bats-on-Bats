@@ -1,0 +1,38 @@
+<% include ../partials/header %>
+<div class="ui main container">
+  <div class="ui huge header">Add your lastest Bat find</div>
+  <form class="ui form" action="/bats" method="POST">
+    <div class="field">
+      <label>Nickname</label>
+      <input type="text" name="bat[nickname]" placeholder="Nickname" required />
+    </div>
+    <div class="field">
+      <label>Image URL</label>
+      <input
+        type="text"
+        name="bat[image]"
+        placeholder="Paste image link here"
+        required
+      />
+    </div>
+    <div class="field">
+      <label>Scare Tactic</label>
+      <textarea
+        name="bat[scareTactic]"
+        placeholder="In one sentence, what does this bat do that makes it scary?"
+        rows="4"
+        required
+      ></textarea>
+    </div>
+    <div class="two wide field">
+      <label
+        >Scare Score <br />
+        (1-100)</label
+      >
+      <input type="number" max="100" name="bat[scareScore]" required />
+    </div>
+    <button class="ui button" type="submit">Submit</button>
+  </form>
+</div>
+
+<% include ../partials/footer %>

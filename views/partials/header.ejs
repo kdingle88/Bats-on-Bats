@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bats On Bats</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+    />
+    <link rel="stylesheet" href="/stylesheets/app.css" />
+  </head>
+  <body>
+    <div class="ui inverted menu">
+      <!-- <div class="ui container"> -->
+      <div class="header item">
+        BatsOnBats
+      </div>
+      <a href="/bats" class="item">
+        Home
+      </a>
+      <a href="/bats/new" class="item">
+        Add a Bat
+      </a>
+      <div class="ui floated right item">
+        <% if(!currentUser) { %>
+        <div class="item">
+          <a href="/register">Register</a>
+        </div>
+        <div class="item">
+          <a href="/login">Login</a>
+        </div>
+        <% } else { %>
+        <div class="item">
+          <a href="/logout">Logout</a>
+        </div>
+        <% } %>
+      </div>
+    </div>
+
+    <div class="ui container">
+      <% if(error && error.length > 0) { %>
+      <div class="ui negative message">
+        
+        <div class="header"><%=error %></div>
+      </div>
+      <% } %>
+      <% if(success && success.length > 0) { %>
+      <div class="ui positive message">
+        
+        <div class="header"><%=success %></div>
+      </div>
+      <% } %>
+    </div>
+  

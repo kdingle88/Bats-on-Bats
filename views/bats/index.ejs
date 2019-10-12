@@ -1,0 +1,36 @@
+<% include ../partials/header %>
+<div class="ui main container">
+  <div class="ui huge header">Community Bat Collection</div>
+  <div class="ui two column grid">
+    <% bats.forEach(bat => { %>
+    <div class="column">
+      <div class="ui card">
+        <div class="image">
+          <img src=<%= bat.image %> />
+        </div>
+        <div class="content">
+          <a href="/bats/<%=bat._id%>" class="header"><%= bat.nickname %></a>
+          <div class="meta">
+            <span class="date">Bat added <%= bat.created %></span>
+          </div>
+          <div class="meta">
+            <span>Created by <%= bat.author.username %></span>
+          </div>
+          <div class="description">
+            <%= bat.scareTactic %>
+          </div>
+        </div>
+        <div class="extra content">
+          <i class="user icon"></i>
+          <%= bat.scareScore %> Scare Score
+          <span class="details"
+            ><a href="/bats/<%=bat._id%>">More Details</a></span
+          >
+        </div>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+</div>
+
+<% include ../partials/footer %>
